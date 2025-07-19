@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.implementation
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -27,20 +28,34 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
     buildFeatures {
         compose = true
     }
+
+    packaging {
+        resources {
+            pickFirsts.add("com/tom_roush/pdfbox/resources/glyphlist/glyphlist.txt")
+            pickFirsts.add("com/tom_roush/pdfbox/resources/ttf/LiberationSans-Regular.ttf")
+            pickFirsts.add("com/tom_roush/pdfbox/resources/ttf/LiberationSerif-Regular.ttf")
+            pickFirsts.add("com/tom_roush/pdfbox/resources/ttf/LiberationMono-Regular.ttf")
+        }
+    }
+
 }
 
 dependencies {
-    implementation(libs.androidx.ui.text.google.fonts)
+    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.6.4")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

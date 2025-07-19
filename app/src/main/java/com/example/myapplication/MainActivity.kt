@@ -17,9 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.GoogleFont
-import androidx.compose.ui.text.googlefonts.GoogleFontProvider
-import androidx.compose.ui.text.googlefonts.rememberGoogleFont
-import androidx.compose.ui.text.platform.Font
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,15 +35,6 @@ class MainActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        // Custom Font
-                        val font = rememberGoogleFont(
-                            name = "JetBrains Mono",
-                            provider = GoogleFont.Provider(
-                                authority = "com.google.android.gms.fonts",
-                                packageName = "com.google.android.gms",
-                                certificates = R.array.com_google_android_gms_fonts_certs
-                            )
-                        )
 
                         // Title Text
                         Text(
@@ -55,7 +43,6 @@ class MainActivity : ComponentActivity() {
                             color = Color.White,
                             fontWeight = FontWeight.ExtraBold,
                             textAlign = TextAlign.Center,
-                            fontFamily = font,
                             modifier = Modifier.padding(bottom = 32.dp)
                         )
 
